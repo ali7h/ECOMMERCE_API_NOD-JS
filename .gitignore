@@ -1,0 +1,4 @@
+#? here put the files that will not upload to github 
+
+node_modules/
+config.env
