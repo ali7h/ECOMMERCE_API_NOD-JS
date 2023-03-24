@@ -1,0 +1,67 @@
+[
+    {
+        "title": "Lady's Well: A DCI Ryan Mystery ",
+        "quantity": 1,
+        "sold": 25,
+        "price": 20.5,
+        "priceAfterDiscount": 17,
+        "description": "When the ancient waters of Lady’s Well in the rural village of Holystone begin to run red, it seems to be a nasty Hallowe’en prank and nothing more. But things take a sinister turn when the entire village suffers severe poisoning, and one old man turns up dead",
+        "imageCover": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+        "category":"6418976d43dd80f9de58a622",
+        "subcategories":["641898ca43dd80f9de58a62e"],
+        "ratingsAverage": 4.3,
+        "ratingsQuantity": 20
+    },
+    {
+        "title": "Run Rose Run: The smash-hit Sunday Times bestseller",
+        "quantity": 1,
+        "sold": 25,
+        "price": 20.5,
+        "priceAfterDiscount": 17,
+        "description": "THE PERFECT MOTHER'S DAY GIFTThe global number one bestseller, set to become a hit movie produced by Reese Witherspoon and starring Dolly Parton.AN ORIGINAL COLLABORATION BETWEEN THE BELOVED INTERNATIONAL SUPERSTAR AND THE WORLD'S #1 BESTSELLING THRILLER WRITER",
+        "imageCover": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+        "category":"6418976d43dd80f9de58a622",
+        "subcategories":["641898ca43dd80f9de58a62e","641898f843dd80f9de58a636"],
+        "ratingsAverage": 4.3,
+        "ratingsQuantity": 20
+    },
+    {
+        "title": "The thriller that will capture your heart and blow your mind",
+        "quantity": 1,
+        "sold": 25,
+        "price": 40.5,
+        "description": "Lowen Ashleigh is a struggling writer on the brink of financial ruin when she accepts the job offer of a lifetime. Jeremy Crawford, husband of bestselling author Verity Crawford, has hired Lowen to complete the remaining books in a successful series his injured wife is unable to finish.",
+        "imageCover": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+        "category":"6418976d43dd80f9de58a622",
+        "subcategories":["641898f843dd80f9de58a636"],
+        "ratingsAverage": 4.7,
+        "ratingsQuantity": 14
+    },
+    {
+        "title": "The Earth Transformed: An Untold History",
+        "quantity": 1,
+        "sold": 23,
+        "price": 32.2,
+        "priceAfterDiscount": 27,
+        "description": "From the international bestselling author of The Silk Roads comes a major history of how a changing climate has dramatically shaped the development-and demise-of civilisations across time.",
+        "imageCover": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+        "category":"6418976d43dd80f9de58a622",
+        "subcategories":["641898d543dd80f9de58a630"],
+        "ratingsAverage": 4.4,
+        "ratingsQuantity": 19
+    },
+    {
+        "title": "ali eating shit",
+        "quantity": 1,
+        "sold": 100,
+        "price": 5,
+        "priceAfterDiscount": 3,
+        "description": "it's about ali who try to build this fucking api",
+        "imageCover": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+        "category":"6418976d43dd80f9de58a622",
+        "subcategories":["641898d543dd80f9de58a630"],
+        "ratingsAverage": 5,
+        "ratingsQuantity": 40
+    }
+
+]

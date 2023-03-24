@@ -1,89 +1,49 @@
-const slugify=require('slugify')                          //* it's replace spaces or invaild syntax to '-' char
-const asysnchandler=require('express-async-handler')      //* it's handel the promse and error without catch block
 const Category=require('../models/categoryModel')
-const ApiError = require('../utils/ApiError')
+const factory = require('./handlersFactory');
+
+
+//* it's replace spaces or invaild syntax to '-' char
+
+  // TODO : desc    Get list of categories
+  // ?    : route   GET /api/v1/categories
+  // !    : access  Public
+
+  exports.getCategories = factory.getAll(Category);
+  
 
 
 
 
-//   TODO   :  create category
-// ? route? :  POST request
-// ! access :  Privte
+  // TODO : desc    Get specific category by id
+  // ?    : rout   GET /api/v1/categories/:id
+  // !    : access  Public
 
-
-exports.createCategory=asysnchandler(async (req,res)=>{
-    const name=req.body.name;
-    const category=await Category.create({name,slug:slugify(name)})
-    res.status(201).json({data:category})
-})
+  exports.getCategory = factory.getOne(Category);
+  
 
 
 
-//   TODO   :  show categories
-// ? route? :  GET request from /api/v1/categories
-// ! access :  Public
+  // TODO : desc    Create Category
+  // ?    : rout   POST /api/v1/categories/
+  // !    : access  private
 
-exports.getCategories=asysnchandler(async(req,res)=>{       
-    const page  = req.query.page * 1  || 1                                  //*current page
-    const limit = req.query.limit * 1 || 5                                  //*No.of document/page
-    const skip = (page - 1) * limit                                         //*how many document well skip it
-    const categories = await Category.find({}).skip(skip).limit(limit)
-    res.status(201).json({result:categories.length,page,data:categories})
-})
-
-
-
-//   TODO   :  Show specific category
-// ? route? :  GET request from /api/v1/categories/:id
-// ! access :  Public
-
-exports.getCategory=asysnchandler(async(req,res,next)=>{
-    const {id} = req.params;
-    const category = await Category.findById(id)
-    if(!category){
-        // res.status(404).json({msg:`No category for this id ${id}`})
-        return next(new ApiError(`No category for this id ${id}`,404))
-    }
-    res.status(200).json({data:category})
-})
-
-
-
-//   TODO   :  Update specific category
-// ? route? :  PUT request from /api/v1/categories/:id
-// ! access :  Private
-
-exports.updateCategory=asysnchandler(async(req,res,next)=>{
-    const {id}   = req.params;
-    const {name} = req.body
-
-    const category = await Category.findOneAndUpdate(
-        {_id:id},                               //TODO filteration : how i can get this category 
-        {name:name,slug:slugify(name)},         //TODO update      : which fileds will change
-        {new:true}                              //TODO options     : return the category after update
-        )
-        
-    if(!category){
-        // res.status(404).json({msg:`No category for this id ${id}`})
-        return next(new ApiError(`No category for this id ${id}`,404))
-
-    }
-    res.status(200).json({data:category})
-})
+  exports.createCategory = factory.createOne(Category);
+  
 
 
 
 
-//   TODO   :  Delete specific category
-// ? route? :  DELETE request from /api/v1/categories/:id
-// ! access :  Private
+  // TODO : desc    Update specific category
+  // ?    : rout   PUT /api/v1/categories/:id
+  // !    : access  private
 
-exports.deleteCategory=asysnchandler(async(req,res,next)=>{
-    const {id}   = req.params;
-    const category = await Category.findOneAndDelete(id)
-    if(!category){
-        // res.status(404).json({msg:`No category for this id ${id}`})
-        return next(new ApiError(`No category for this id ${id}`,404))
-    }
-    res.status(204).send()
-})
+  exports.updateCategory = factory.updateOne(Category);
+
+
+
+
+  // TODO : desc    Delete specific Category
+  // ?    : rout   DELETE /api/v1/categories/:id
+  // !    : access  private
+
+  exports.deleteCategory = factory.deleteOne(Category);

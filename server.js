@@ -7,18 +7,22 @@ const dotenv=require('dotenv')
 dotenv.config({path:"config.env"})
 
 const categoryRoute=require('./routes/categoryRoute')
-const brandRoute=require('./routes/brandRoute')
 const subCategoryRoute=require('./routes/subCategoryRoute')
+const brandRoute=require('./routes/brandRoute')
+const productRoute=require('./routes/productRoute')
+
 
 const ApiError=require('./utils/ApiError')
 const globelError = require('./middlewares/errorMiddleware')
 
 
-
 const app=express()
+
+
 
 //*connect with mongoDb
 dbConnection()
+
 
 
 //Middlewares
@@ -33,6 +37,7 @@ if(process.env.NODE_ENV==='development'){
 app.use('/api/v1/categories',categoryRoute)
 app.use('/api/v1/subcategories',subCategoryRoute)
 app.use('/api/v1/brands',brandRoute)
+app.use('/api/v1/products',productRoute)
 
 
 

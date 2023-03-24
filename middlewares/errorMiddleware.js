@@ -1,13 +1,14 @@
-const globelError = (err,req,res,next)=>{      //* when you send 4 arguement express know this error handleing
+const globelError = (err,req,res,next) => {      //* when you send 4 arguement express know this error handleing
     err.statusCode = err.statusCode || 500
-    err.status=err.status || 'error'
-    if(process.env.NODE_ENV==='development'){
+    err.status = err.status || 'error'
+    if(process.env.NODE_ENV === 'development'){
         sendfErrorForDev(err,res)
     }
     else{
         sendfErrorForProd(err,res)
     }
 }
+
 
 
 // *in development mode you see all the detials
@@ -28,5 +29,6 @@ const sendfErrorForProd=(err,res)=>{
         message:err.message,
     })
 }
+
 
 module.exports=globelError;
