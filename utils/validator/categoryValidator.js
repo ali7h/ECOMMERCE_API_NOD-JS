@@ -26,14 +26,6 @@ validatorMiddleware,
 
 exports.updateCategoryValidator = 
 [
-
-    check('name')
-    .notEmpty()
-    .withMessage('category required')
-    .isLength({min:3})
-    .withMessage('Too short category name')
-    .isLength({max:32})
-    .withMessage('Too short category name'),
     body('name')
     .optional()
     .custom((val, { req }) => {

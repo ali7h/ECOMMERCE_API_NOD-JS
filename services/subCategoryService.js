@@ -1,10 +1,5 @@
-const slugify=require('slugify')                          //* it's replace spaces or invaild syntax to '-' char
-const asysnchandler=require('express-async-handler')      //* it's handel the promse and error without catch block
 const SubCategory=require('../models/subCategoryModel')
-const ApiError = require('../utils/ApiError')
-const ApiFeatures = require('../utils/ApiFeatures')
 const factory = require('./handlersFactory');
-
 
 
     // TODO : Nested route (Create)

@@ -19,6 +19,22 @@ const CategorySchema=new mongoose.Schema({
 },{timestamps:true})        //? timestamps add the filed of time that you create and update the category  
 
 
+const setImageURL = (doc) => {
+    if (doc.image) {
+      const imageUrl = `${process.env.BASE_URL}/categories/${doc.image}`;
+      doc.image = imageUrl;
+    }
+  };
+  // findOne, findAll and update
+  CategorySchema.post('init', (doc) => {
+    setImageURL(doc);
+  });
+  
+  // create
+  CategorySchema.post('save', (doc) => {
+    setImageURL(doc);
+  });
+  
 
 const categoryModel=mongoose.model('Category',CategorySchema)
 

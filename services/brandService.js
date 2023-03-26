@@ -1,8 +1,28 @@
-const slugify=require('slugify')                          //* it's replace spaces or invaild syntax to '-' char
-const asysnchandler=require('express-async-handler')      //* it's handel the promse and error without catch block
 const Brand = require('../models/brandModel')
 const factory = require('./handlersFactory');
+const AsyncHandler = require('express-async-handler');
 
+
+const {uploadSingleImage}=require("../middlewares/uploadImageMiddlewares")
+const sharp=require('sharp');
+const {v4:uuidv4} = require('uuid');      //* generate random id
+
+
+// TODO : upload single image
+exports.uploadBrandImage = uploadSingleImage("image")
+
+
+// TODO : image processing
+exports.resizeImage= AsyncHandler (async(req,rres,next) => {
+  const filename = `brand-${uuidv4()}-${Date.now()}.jpeg`
+await sharp(req.file.buffer)
+.resize(600,600)
+.toFormat("jpeg")
+.jpeg({quality:99})
+.toFile(`uploads/brands/${filename}`)
+req.body.image=filename
+next()
+})
 
 
 

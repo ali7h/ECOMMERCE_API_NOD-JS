@@ -7,7 +7,9 @@ const {
     getProduct,
     createProduct,
     updateProduct,
-    deleteProduct
+    deleteProduct,
+    uploadProductImages,
+    resizeProductImages,
 } = require('../services/productService')
 
 
@@ -19,16 +21,19 @@ const {
 } = require('../utils/validator/productValidator')
 
 
-router.route('/').get(getProducts).post(createProductValidator,createProduct)
+router.route('/').get(getProducts)
+.post(
+    uploadProductImages,
+    resizeProductImages,
+    createProductValidator,
+    createProduct,
+    )
 
 router.route("/:id")
 .get(getProductValidator,getProduct)
-.put(updateProductValidator,updateProduct)
+.put(uploadProductImages,resizeProductImages,updateProductValidator,updateProduct)
 .delete(deleteProductValidator,deleteProduct)
 
-
-// // todo : if the request was on "/:categoryId/subcategories" go to subcategoryRoute
-// router.use('/:categoryId/subcategories',subcategoriesRoute)
 
 
 module.exports=router

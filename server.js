@@ -1,29 +1,38 @@
+const path=require('path')
+
 const express=require('express');
-const dbConnection=require('./config/database')
 const morgan=require("morgan")
 
 // TODO use dotenv to access to the config.env file
 const dotenv=require('dotenv')
 dotenv.config({path:"config.env"})
 
+
+// TODO connection with database
+const dbConnection=require('./config/database')
+
+
+// TODO define the routes
 const categoryRoute=require('./routes/categoryRoute')
 const subCategoryRoute=require('./routes/subCategoryRoute')
 const brandRoute=require('./routes/brandRoute')
 const productRoute=require('./routes/productRoute')
 
 
+// TODO error handleing
 const ApiError=require('./utils/ApiError')
 const globelError = require('./middlewares/errorMiddleware')
+
 
 
 const app=express()
 
 
-
 //*connect with mongoDb
 dbConnection()
 
-
+//*store images in uploads folder
+app.use(express.static(path.join(__dirname,"uploads")))
 
 //Middlewares
 app.use(express.json())
@@ -51,6 +60,7 @@ app.all("*",(req,res,next)=>{           //! "*" mean any route not found
 
 //!Globel error handleing middelware for express
 app.use(globelError)
+
 
 
 const PORT=process.env.PORT || 8000;

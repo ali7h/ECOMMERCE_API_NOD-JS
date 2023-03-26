@@ -1,5 +1,29 @@
 const Category=require('../models/categoryModel')
 const factory = require('./handlersFactory');
+const AsyncHandler = require('express-async-handler');
+
+const {uploadSingleImage}=require("../middlewares/uploadImageMiddlewares")
+const sharp=require('sharp');
+const {v4:uuidv4} = require('uuid');
+
+
+// TODO : upload single image
+exports.uploadCategoryImage = uploadSingleImage("image")
+
+
+// TODO : image processing
+exports.resizeImage= AsyncHandler (async(req,rres,next) => {
+  const filename = `category-${uuidv4()}-${Date.now()}.jpeg`
+await sharp(req.file.buffer)
+.resize(600,600)
+.toFormat("jpeg")
+.jpeg({quality:99})
+.toFile(`uploads/categories/${filename}`)
+req.body.image=filename
+next()
+})
+
+
 
 
 //* it's replace spaces or invaild syntax to '-' char
